@@ -19,15 +19,7 @@ theta = np.linspace(-5,5,len)
 V = np.array(([9,0],[0,-16]))
 F = 144
 
-#Standard Eqn : y.T@D@y=1
-#comparing these equations, get :  
-#y = P.T@x/sqrt(F)
-#P.T@V@P = D
-#P.T@P = I
-
 eigval,eigvec = LA.eig(V)
-print(eigval)
-print(eigvec)
 
 D = np.diag(eigval)
 P = eigvec
