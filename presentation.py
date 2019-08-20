@@ -1,4 +1,4 @@
-#Program to plot teh required hyperbola
+#Program to plot the required hyperbola
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy import linalg as LA
