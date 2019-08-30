@@ -2,7 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-#Defining the curve
+#Defining the cubic curve
 def curve_cubic(a,b,c,d):
 	x=list(range(-10,11))
 	y=[(a*i**3+b*i**2+c*i+d) for i in x]
