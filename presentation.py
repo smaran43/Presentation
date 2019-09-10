@@ -3,11 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy import linalg as LA
 
-#if using termux
-import subprocess
-import shlex
-#end if
-
 #setting up plot
 fig = plt.figure()
 ax = fig.add_subplot(111, aspect='equal')
@@ -78,11 +73,5 @@ ax.plot()
 plt.xlabel('$x$');plt.ylabel('$y$')
 plt.legend(loc='best')
 plt.axis('equal')
-
-# #if using termux
-#plt.savefig('../figs/hyperbola.pdf')
-#plt.savefig('../figs/hyperbola.eps')
-#subprocess.run(shlex.split("termux-open ../figs/hyperbola.pdf"))
-#else
 
 plt.show()
