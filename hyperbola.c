@@ -1,7 +1,7 @@
 #include<stdio.h>
 //Declaring the order of matrices
 float v[2][2];
-float i,j;
+int i,j;
 float n[2][1];
 float u[2][1];
 float p[2][1];
