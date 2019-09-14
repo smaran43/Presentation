@@ -37,5 +37,5 @@ print(X,1,1);
   
 //Normal vector of normal
 printf("normal vector N = \n");
-print((N),2,1);
+print(N,2,1);
 }
