@@ -21,16 +21,21 @@ u=createMat(2,1);
 *u[0]=0;
 *u[1]=0;
 
+//finding q(n) using the equation n=Vp+u
 O = matmul(V,p,2,2,1);
 q=linalg_sub(O,u,2,1);
 
+//finding normal vector to the equation of normal of hyperbola
 N = matmul(mat,O,2,2,1);
 X = matmul(transpose(N,2,1),p,1,2,1);
 
+//The equation of normal  
 printf("Equation of normal to hyperbola at point p is \n");
 print(transpose(N,2,1),1,2);
 printf("x=");
 print(X,1,1);
+  
+//Normal vector of normal
 printf("normal vector N = \n");
 print((N),2,1);
 }
