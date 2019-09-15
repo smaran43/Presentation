@@ -122,6 +122,26 @@ return c;
 }
 //End function for difference of matrices
 
+//Defining the function for addition of matrices
+
+double **linalg_add(double **a, double **b, int m, int n)
+{
+int i, j;
+double **c;
+c = createMat(m,n);
+
+ for(i=0;i<m;i++)
+ {
+  for(j=0;j<n;j++)
+  {
+c[i][j]= a[i][j]+b[i][j];
+  }
+ }
+return c;
+
+}
+//End function for addition of matrices
+
 //Defining the function for inverse of 2x2 matrix
 
 
@@ -189,6 +209,42 @@ return c;
 
 }
 //End function for transpose of matrix
+
+//generating angles
+void uniform2(char *str, int len)
+{
+int i;
+
+FILE *fp;
+
+fp = fopen(str,"w");
+//Generate numbers
+for (i = 0; i < len; i++)
+{
+fprintf(fp,"%lf\n",(double)rand()*(44.0/7.0)/RAND_MAX);
+}
+fclose(fp);
+
+}
+//Generating angles
+void uniform3(char *str, int len)
+{
+int i;
+
+FILE *fp;
+double nu=0.0;
+
+fp = fopen(str,"w");
+//Generate numbers
+for (i = 0; i < len; i++)
+{
+nu=nu+(22.0/7.0)/50;
+fprintf(fp,"%lf\n",nu);
+}
+fclose(fp);
+
+}
+//end generating angles
 
 //Defining the function for generating uniform random numbers
 void uniform(char *str, int len)
