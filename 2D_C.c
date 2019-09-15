@@ -23,7 +23,7 @@ u=createMat(2,1);
 
 //finding q(n) using the equation n=Vp+u
 O = matmul(V,p,2,2,1);
-q=linalg_sub(O,u,2,1);
+q=linalg_add(O,u,2,1);
 
 //finding normal vector to the equation of normal of hyperbola
 N = matmul(mat,O,2,2,1);
