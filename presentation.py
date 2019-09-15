@@ -18,7 +18,7 @@ y[1,:] = b*np.tan(theta)
 
 #Plotting the  normal
 P=np.loadtxt('data/p.dat',dtype='double')
-B=np.loadtxt('B.dat',dtype='double')
+B=np.loadtxt('data/B.dat',dtype='double')
 len =50
 
 x_P = np.zeros((2,len))
