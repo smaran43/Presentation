@@ -1,43 +1,48 @@
-#Program to plot the required hyperbola
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy import linalg as LA
-
-#setting up plot
-fig = plt.figure()
-ax = fig.add_subplot(111, aspect='equal')
-len = 1000
-theta = np.linspace(-5,5,len)
-
-#Given hyperbola parameters
-#Eqn : x.T@V@x = F
-V = np.array(([9,0],[0,-16]))
-F = 144
-
-eigval,eigvec = LA.eig(V)
-
-D = np.diag(eigval)
-P = eigvec
-print("D=\n",D)
-print("P=\n",P)
+import math
 
 
-#Generating points on the hyperbola at origin
+#Plotting the hyperbola
+len=100
+O=np.array([0,0])
+
+theta = np.loadtxt('theta.dat',dtype='double')
+k=np.loadtxt('eigen.dat',dtype='double')
 y = np.zeros((2,len))
-y[0,:] = 1/eigval[0]*np.cosh(theta)
-y[1,:] = 1/eigval[1]*np.sinh(theta)
+a=1/(k[0]**0.5)
+b=1/((-k[1])**0.5)
+y[0,:] = a*(1/np.cos(theta))
+y[1,:] = b*np.tan(theta)
 
-#Standard hyperbola : y.T@D@y=1
-y1 = np.linspace(-1,1,len)
-y2 = np.sqrt((1-D[0,0]*np.power(y1,2))/(D[1,1]))
-y3 = -1*np.sqrt((1-D[0,0]*np.power(y1,2))/(D[1,1]))
-y = np.hstack((np.vstack((y1,y2)),np.vstack((y1,y3))))
+#Plotting the  normal
+P=np.loadtxt('data/p.dat',dtype='double')
+B=np.loadtxt('B.dat',dtype='double')
+len =50
 
-#Affine Transformation
-#Equation : y = P.T@(x-c)/(K**0.5)
-x = (P @ (y)) * F**0.5
+x_P = np.zeros((2,len))
+lam_1 = np.linspace(-1,1,len)
 
-#Plotting required hyperbola
+for i in range(len):
+
+    temp1 = P + lam_1[i]*(B-P)
+
+    x_P[:,i]= temp1.T
+    
+plt.plot(x_P[0,:],x_P[1,:],label='Normal') 
+plt.plot(P[0], P[1], 'o')
+    
+plt.plot(y[0,:],y[1,:],label='Hyperbola')
+plt.plot(O[0], O[1], 'o')
+
+plt.text(O[0] * (1 - 0.1), O[1] * (1 + 0.1) , 'O')
+
+plt.legend(loc="best")
+plt.axis('equal')
+plt.xlabel('$x$');plt.ylabel('$y$')
+plt.grid()
+plt.show()
 plt.plot(x[0,:len],x[1,:len],color='r',label='Hyperbola')
 plt.plot(x[0,len+1:],x[1,len+1:],color='r')
 
